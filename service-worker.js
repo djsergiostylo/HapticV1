@@ -1,9 +1,10 @@
-const CACHE_NAME = 'haptic-v1-shell-v1';
+const CACHE_NAME = 'haptic-v1-shell-v2';
 const APP_SHELL = [
   './',
   './index.html',
   './src/styles/app.css',
   './src/app/bootstrap.js',
+  './src/storage/pattern-storage.js',
   './public/manifest.webmanifest'
 ];
 
