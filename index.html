@@ -29,9 +29,34 @@
       <div id="timeline" class="timeline" aria-live="polite"></div>
     </section>
 
+    <section class="panel editor-panel" aria-labelledby="editorTitle">
+      <div>
+        <p class="eyebrow">SEGMENTO SELECCIONADO</p>
+        <h2 id="editorTitle">Edición</h2>
+      </div>
+      <div class="editor-grid">
+        <label>Tipo
+          <select id="segmentType">
+            <option value="vibrate">Vibración</option>
+            <option value="pause">Pausa</option>
+          </select>
+        </label>
+        <label>Duración (ms)
+          <input id="durationInput" type="number" min="50" max="3000" step="50" value="250">
+        </label>
+        <label>Intensidad
+          <input id="segmentIntensity" type="range" min="0" max="1" step="0.1" value="0.6">
+        </label>
+      </div>
+      <div class="button-row editor-actions">
+        <button id="duplicateButton" type="button">Duplicar</button>
+        <button id="deleteButton" type="button">Eliminar</button>
+      </div>
+    </section>
+
     <section class="panel controls" aria-label="Controles de reproducción">
       <label>
-        Intensidad simulada
+        Intensidad global para nuevos segmentos
         <input id="intensityInput" type="range" min="0.1" max="1" step="0.1" value="0.6">
       </label>
       <div class="button-row">
