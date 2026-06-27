@@ -47,3 +47,11 @@
 - Separado motor háptico en `src/services/haptic-engine.js`.
 - PWA confirmada con manifest y Service Worker v3.
 - Añadido `src/domain/pattern-validator.js` con límites y reglas básicas.
+
+### 2026-06-27 · Editor de segmentos MVP
+
+- Añadida selección visual de barras y panel de edición.
+- Editables: tipo, duración e intensidad; duplicar y eliminar.
+- Validación aplicada antes de reproducir; guardado local automático.
+- Service Worker actualizado a caché v4 e incluye el validador.
+- Siguiente: reordenación, importación/exportación y forma de onda.
