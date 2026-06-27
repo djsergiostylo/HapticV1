@@ -39,3 +39,11 @@
 - Creado `PROJECT_MEMORY_V2.md` como memoria principal optimizada.
 - `PROJECT_MEMORY.md` se conserva como histórico original.
 - Desde ahora, cada avance se añadirá aquí en cadena cronológica.
+
+### 2026-06-27 · Modularización MVP
+
+- Activado `src/app/bootstrap-v2.js` desde `index.html`.
+- Separados presets en `src/domain/presets.js`.
+- Separado motor háptico en `src/services/haptic-engine.js`.
+- PWA confirmada con manifest y Service Worker v3.
+- Añadido `src/domain/pattern-validator.js` con límites y reglas básicas.
