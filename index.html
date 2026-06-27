@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b10">
+  <title>HapticV1</title>
+  <link rel="manifest" href="./public/manifest.webmanifest">
+  <link rel="stylesheet" href="./src/styles/app.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">HAPTIC PATTERN STUDIO</p>
+        <h1>Editor visual</h1>
+      </div>
+      <button id="stopButton" class="danger" type="button">DETENER</button>
+    </header>
+
+    <section class="panel" aria-labelledby="timelineTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PATRÓN ACTUAL</p>
+          <h2 id="timelineTitle">Timeline</h2>
+        </div>
+        <button id="addButton" type="button">Añadir barra</button>
+      </div>
+      <div id="timeline" class="timeline" aria-live="polite"></div>
+    </section>
+
+    <section class="panel controls" aria-label="Controles de reproducción">
+      <label>
+        Intensidad simulada
+        <input id="intensityInput" type="range" min="0.1" max="1" step="0.1" value="0.6">
+      </label>
+      <div class="button-row">
+        <button id="slowPreset" type="button">Lento</button>
+        <button id="fastPreset" type="button">Rápido</button>
+        <button id="playButton" class="primary" type="button">▶ Probar</button>
+      </div>
+      <p id="status" class="status">Preparado</p>
+    </section>
+  </main>
+
+  <script type="module" src="./src/app/bootstrap.js"></script>
+</body>
+</html>
