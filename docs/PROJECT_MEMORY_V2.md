@@ -55,3 +55,11 @@
 - Validación aplicada antes de reproducir; guardado local automático.
 - Service Worker actualizado a caché v4 e incluye el validador.
 - Siguiente: reordenación, importación/exportación y forma de onda.
+
+### 2026-07-12 · Versión profesional web
+
+- Activada UI profesional con `src/app/main.js` y `src/styles/pro.css`.
+- Añadidos módulos: fábrica, operaciones, biblioteca, audio, Bluetooth y Gamepad/Xbox.
+- Funciones activas: editor, biblioteca local, import/export, audio a patrón, PWA offline y parada total.
+- Documentación añadida: Mac runbook, guía de código, compatibilidad y comercialización.
+- Limitación registrada: Bluetooth no garantiza controlar vibración Xbox; se prioriza Gamepad API.
