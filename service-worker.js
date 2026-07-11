@@ -1,13 +1,18 @@
-const CACHE_NAME = 'haptic-v1-shell-v4';
+const CACHE_NAME = 'haptic-v1-shell-v5';
 const APP_SHELL = [
   './',
   './index.html',
-  './src/styles/app.css',
-  './src/app/bootstrap-v2.js',
+  './src/styles/pro.css',
+  './src/app/main.js',
   './src/domain/presets.js',
+  './src/domain/pattern-factory.js',
+  './src/domain/pattern-operations.js',
   './src/domain/pattern-validator.js',
   './src/services/haptic-engine.js',
-  './src/storage/pattern-storage.js',
+  './src/services/gamepad-driver.js',
+  './src/services/bluetooth-driver.js',
+  './src/services/audio-engine.js',
+  './src/storage/pattern-library.js',
   './public/manifest.webmanifest'
 ];
 
