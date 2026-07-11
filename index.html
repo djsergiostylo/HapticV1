@@ -4,70 +4,104 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#090b10">
-  <title>HapticV1</title>
+  <title>HapticV1 · Studio</title>
   <link rel="manifest" href="./public/manifest.webmanifest">
-  <link rel="stylesheet" href="./src/styles/app.css">
+  <link rel="stylesheet" href="./src/styles/pro.css">
 </head>
 <body>
-  <main class="app-shell">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">HAPTIC PATTERN STUDIO</p>
-        <h1>Editor visual</h1>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <p class="eyebrow">HAPTICV1</p>
+        <b>Pattern Studio</b>
+        <span class="muted">PWA háptica + audio + mando Xbox</span>
       </div>
-      <button id="stopButton" class="danger" type="button">DETENER</button>
-    </header>
 
-    <section class="panel" aria-labelledby="timelineTitle">
-      <div class="section-heading">
+      <div class="panel">
+        <h3>Biblioteca</h3>
+        <div id="library" class="library"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Dispositivos</h3>
+        <div class="device-card"><span>Mando Xbox / Gamepad</span><b id="gamepadStatus">Detectando...</b></div>
+        <div class="device-card"><span>Web Bluetooth</span><b id="bluetoothStatus">Detectando...</b></div>
+        <button id="connectBluetooth" class="ghost" type="button">Buscar Bluetooth</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
         <div>
-          <p class="eyebrow">PATRÓN ACTUAL</p>
-          <h2 id="timelineTitle">Timeline</h2>
+          <p class="eyebrow">EDITOR PROFESIONAL</p>
+          <h1>Diseño visual de vibraciones</h1>
         </div>
-        <button id="addButton" type="button">Añadir barra</button>
-      </div>
-      <div id="timeline" class="timeline" aria-live="polite"></div>
-    </section>
+        <button id="stopButton" class="danger" type="button">DETENER TODO</button>
+      </header>
 
-    <section class="panel editor-panel" aria-labelledby="editorTitle">
-      <div>
-        <p class="eyebrow">SEGMENTO SELECCIONADO</p>
-        <h2 id="editorTitle">Edición</h2>
-      </div>
-      <div class="editor-grid">
-        <label>Tipo
-          <select id="segmentType">
-            <option value="vibrate">Vibración</option>
-            <option value="pause">Pausa</option>
-          </select>
-        </label>
-        <label>Duración (ms)
-          <input id="durationInput" type="number" min="50" max="3000" step="50" value="250">
-        </label>
-        <label>Intensidad
-          <input id="segmentIntensity" type="range" min="0" max="1" step="0.1" value="0.6">
-        </label>
-      </div>
-      <div class="button-row editor-actions">
-        <button id="duplicateButton" type="button">Duplicar</button>
-        <button id="deleteButton" type="button">Eliminar</button>
-      </div>
-    </section>
+      <section class="panel">
+        <div class="toolbar">
+          <input id="patternName" aria-label="Nombre del patrón" value="Patrón inicial">
+          <button id="newPattern" type="button">Nuevo</button>
+          <button id="savePattern" class="primary" type="button">Guardar</button>
+          <button id="deleteCurrent" type="button">Borrar</button>
+        </div>
+      </section>
 
-    <section class="panel controls" aria-label="Controles de reproducción">
-      <label>
-        Intensidad global para nuevos segmentos
-        <input id="intensityInput" type="range" min="0.1" max="1" step="0.1" value="0.6">
-      </label>
-      <div class="button-row">
-        <button id="slowPreset" type="button">Lento</button>
-        <button id="fastPreset" type="button">Rápido</button>
-        <button id="playButton" class="primary" type="button">▶ Probar</button>
-      </div>
-      <p id="status" class="status">Preparado</p>
-    </section>
-  </main>
+      <section class="grid">
+        <div class="panel">
+          <div class="toolbar">
+            <div><p class="eyebrow">TIMELINE</p><h2>Barras hápticas</h2></div>
+            <div class="row">
+              <button id="slowPreset" type="button">Lento</button>
+              <button id="fastPreset" type="button">Rápido</button>
+              <button id="playPattern" class="primary" type="button">▶ Probar</button>
+            </div>
+          </div>
+          <div id="timeline" class="timeline" aria-live="polite"></div>
+          <canvas id="waveform" aria-label="Onda visual del patrón"></canvas>
+          <p id="status" class="status">Preparado</p>
+        </div>
 
-  <script type="module" src="./src/app/bootstrap-v2.js"></script>
+        <div class="panel form">
+          <div><p class="eyebrow">SEGMENTO</p><h2>Inspector</h2></div>
+          <label class="field"><span>Tipo</span><select id="segmentType"><option value="vibrate">Vibración</option><option value="pause">Pausa</option></select></label>
+          <label class="field"><span>Forma</span><select id="segmentShape"><option value="pulse">Pulso</option><option value="sustain">Sostenida</option><option value="burst">Ráfaga</option><option value="ramp-up">Subida</option><option value="ramp-down">Bajada</option></select></label>
+          <label class="field"><span>Duración ms</span><input id="durationInput" type="number" min="50" max="5000" step="50"></label>
+          <label class="field"><span>Intensidad segmento</span><input id="intensityInput" type="range" min="0" max="1" step="0.05"></label>
+          <label class="field"><span>Intensidad global</span><input id="globalIntensity" type="range" min="0.1" max="1" step="0.05" value="0.6"></label>
+          <div class="button-grid">
+            <button id="addSegment" type="button">Añadir</button>
+            <button id="duplicateSegment" type="button">Duplicar</button>
+            <button id="removeSegment" type="button">Eliminar</button>
+            <button id="moveLeft" type="button">←</button>
+            <button id="moveRight" type="button">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel form">
+          <div><p class="eyebrow">AUDIO LOCAL</p><h2>Sincronización musical</h2></div>
+          <input id="audioFile" type="file" accept="audio/*">
+          <p class="muted">El audio se analiza localmente en el navegador. No se sube a ningún servidor.</p>
+        </div>
+        <div class="panel">
+          <div><p class="eyebrow">MÉTRICAS</p><h2>Estado del patrón</h2></div>
+          <div id="stats" class="stats"></div>
+        </div>
+      </section>
+
+      <section class="panel form">
+        <div class="toolbar">
+          <div><p class="eyebrow">JSON</p><h2>Importar / exportar</h2></div>
+          <div class="row"><button id="exportPattern" type="button">Exportar</button><button id="importPattern" type="button">Importar</button></div>
+        </div>
+        <textarea id="importBox" spellcheck="false" placeholder="Aquí aparecerá el JSON exportado o puedes pegar uno importado"></textarea>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/app/main.js"></script>
 </body>
 </html>
